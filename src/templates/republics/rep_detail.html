@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block name %}{{ rep.name }}{% endblock %}
+
+{% block content %}
+    <h2>{{ rep.name }}</h2>
+    <p class="date">
+        Publicado em {{ rep.created }} por {{ rep.author }}
+    </p>
+    {{ rep.body|linebreaks }}
+{% endblock %}
