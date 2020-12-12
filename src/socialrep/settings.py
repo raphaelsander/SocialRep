@@ -24,8 +24,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: keep the secret key used in production secret!
 try:
     SECRET_KEY = config('SECRET_KEY')
+    print("File Variable Loaded")
 except:
     SECRET_KEY = os.getenv('SECRET_KEY')
+    print("Environment Variable Loaded")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
