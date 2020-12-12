@@ -4,3 +4,4 @@ src/db.sqlite3
 __pycache__/
 .git/
 .vscode/settings.json
+.idea/
