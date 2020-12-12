@@ -4,16 +4,51 @@
 
 {% block content %}
     {% for rep in rep_list %}
-        <article>
-            <h2>
-                <a href="{{ rep.get_absolute_url }}">
-                    {{ rep.name }}
-                </a>
-            </h2>
-            <p class="date">
-                Publicado em {{ rep.created }} por {{ rep.author }}
-            </p>
-            {{ post.body|linebreaks|truncatewords:10 }}
-        </article>
+        <div class="row shadow-sm p-3" style="filter: blur(0px) grayscale(0%) hue-rotate(0deg);margin: 20px;">
+            <div class="col-3 text-center d-table d-sm-table d-lg-flex justify-content-md-center align-items-md-center" style="padding: 0px;">
+                <img style="width: 200px;height: 200px;margin: 20px;">
+            </div>
+            <div class="col-9">
+                <div class="row">
+                    <div class="col-10">
+                        <a href="{{ rep.get_absolute_url }}" style="color: rgb(0,0,0);">
+                            <h1>{{ rep.name }}</h1>
+                        </a>
+                    </div>
+                    <div class="col-2 text-nowrap text-center d-sm-flex d-md-flex align-self-center">
+                        <i class="fa fa-star" style="color: rgb(255,220,96);"></i>
+                        <i class="fa fa-star" style="color: rgb(255,220,96);"></i>
+                        <i class="fa fa-star" style="color: rgb(255,220,96);"></i>
+                        <i class="fa fa-star" style="color: rgb(255,220,96);"></i>
+                        <i class="fa fa-star" style="color: rgb(255,220,96);"></i>
+                    </div>
+                </div>
+                <div class="row d-inline-block" style="height: 160px;">
+                    <div class="col">
+                        <p>{{ rep.body|linebreaks|truncatewords:40 }}</p>
+                        <p class="date">
+                            Publicado em {{ rep.created }} por {{ rep.author }}
+                        </p>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col text-nowrap">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endfor %}
 {% endblock %}
