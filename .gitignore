@@ -1,5 +1,5 @@
 venv/
-src/socialrep/.env
+*/.env
 src/db.sqlite3
 __pycache__/
 .git/
