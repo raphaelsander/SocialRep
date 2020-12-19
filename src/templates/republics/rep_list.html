@@ -1,12 +1,11 @@
 {% extends "base.html" %}
-
 {% block title %}SocialRep{% endblock %}
-
+{% load static %}
 {% block content %}
     {% for rep in rep_list %}
         <div class="row shadow-sm p-3" style="filter: blur(0px) grayscale(0%) hue-rotate(0deg);margin: 20px;">
             <div class="col-3 text-center d-table d-sm-table d-lg-flex justify-content-md-center align-items-md-center" style="padding: 0px;">
-                <img style="width: 200px;height: 200px;margin: 20px;">
+                <img src="/media/{{ rep.img }}" style="width: 200px;height: 200px;margin: 20px;">
             </div>
             <div class="col-9">
                 <div class="row">
@@ -33,19 +32,17 @@
                 </div>
                 <div class="row">
                     <div class="col text-nowrap">
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
-                        <i class="fa fa-star"></i>
+                        {% if rep.has_3d_printer %}<img src="{% static 'imgs/3d_printer.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_animal %}<img src="{% static 'imgs/animal.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_garage %}<img src="{% static 'imgs/garage.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_grill %}<img src="{% static 'imgs/grill.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_internet %}<img src="{% static 'imgs/internet.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_maid %}<img src="{% static 'imgs/maid.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_man %}<img src="{% static 'imgs/man.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_pool %}<img src="{% static 'imgs/pool.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_snooker %}<img src="{% static 'imgs/snooker.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_washing_machine %}<img src="{% static 'imgs/washing_machine.svg' %}" width="36" height="36">{% endif %}
+                        {% if rep.has_woman %}<img src="{% static 'imgs/woman.svg' %}" width="36" height="36">{% endif %}
                     </div>
                 </div>
             </div>
