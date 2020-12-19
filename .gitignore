@@ -5,3 +5,4 @@ __pycache__/
 .git/
 .vscode/settings.json
 .idea/
+media/
