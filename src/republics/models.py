@@ -1,6 +1,21 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
+import os
+from uuid import uuid4
+
+
+def path_and_rename(instance, filename):
+    upload_to = 'images'
+    ext = filename.split('.')[-1]
+    # get filename
+    if instance.pk:
+        filename = '{}.{}'.format(instance.pk, ext)
+    else:
+        # set filename as random string
+        filename = '{}.{}'.format(uuid4().hex, ext)
+    # return the whole path to the file
+    return os.path.join(upload_to, filename)
 
 
 class Rep(models.Model):
@@ -10,7 +25,7 @@ class Rep(models.Model):
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
-    img = models.ImageField(upload_to='images/', null=True)
+    img = models.ImageField(upload_to=path_and_rename, null=True)
     # Has in a republic
     has_animal = models.BooleanField(default=False)
     has_3d_printer = models.BooleanField(default=False)
@@ -30,3 +45,5 @@ class Rep(models.Model):
 
     def get_absolute_url(self):
         return reverse("republics:detail", kwargs={"slug": self.slug})
+
+
