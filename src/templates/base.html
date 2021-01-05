@@ -26,6 +26,7 @@
                     </ul>
                     <span class="navbar-text actions">
                         {% if user.is_authenticated %}
+                        <a class="btn btn-light text-white action-button" role="button" href="/create/" style="background-color: rgb(49,181,3);">Cadastrar Rep</a>
                         <a class="btn btn-light text-white action-button" role="button" href="{% url 'account_logout' %}" style="background-color: rgb(122,0,0);">Sair</a>
                         {% else %}
                         <a class="text-white login" href="{% url 'account_login' %}">Entrar</a>
