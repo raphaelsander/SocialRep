@@ -21,7 +21,7 @@ from republics.views import createrep
 
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('jaVTfPOEIYPQe89JdluEvCFFYHZW5Cnm/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("republics/", include("republics.urls")),
     path("", include("pages.urls", namespace="pages")),
