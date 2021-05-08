@@ -1,6 +1,8 @@
 from .models import Rep
 from django import forms
 
+# https://simpleisbetterthancomplex.com/tutorial/2018/11/28/advanced-form-rendering-with-django-crispy-forms.html
+
 
 class CreateForm(forms.ModelForm):
     class Meta:
