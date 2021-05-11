@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="{% static 'css/Navigation-with-Button.css' %}">
     <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
     <title>{% block title %}{% endblock %}</title>
 </head>
 <body>
@@ -43,5 +44,7 @@
     </main>
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    {% block script %}
+    {% endblock %}
 </body>
 </html>

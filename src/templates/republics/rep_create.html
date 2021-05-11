@@ -15,6 +15,10 @@
         </div>
         {{ form.body|as_crispy_field }}
         {{ form.img|as_crispy_field }}
+        <div class="form-group">
+            <div id="image-box" class="image-container"></div>
+            <button class="btn btn-outline-info" id="crop-btn" style="width: 100%; margin-top: 10px; display: none;" type="button">Crop</button>
+        </div>
         <div class="form-row">
             <div class="form-group col-md-4 mb-0">
                 {{ form.has_animal|as_crispy_field }}
@@ -46,4 +50,47 @@
         </div>
         <button type="submit" class="btn btn-primary">Criar Rep</button>
     </form>
+{% endblock %}
+{% block script %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.js"></script>
+    <script>
+        const imagebox = document.getElementById('image-box')
+        const crop_btn = document.getElementById('crop-btn')
+        const input = document.getElementById('id_img')
+
+        input.addEventListener('change', ()=>{
+          const img_data = input.files[0]
+          const url = URL.createObjectURL(img_data)
+
+          imagebox.innerHTML = `<img src="${url}" id="image" style="width:100%;">`
+
+          const image = document.getElementById('image')
+
+          document.getElementById('image-box').style.display = 'block'
+          document.getElementById('crop-btn').style.display = 'block'
+
+          const cropper = new Cropper(image, {
+          autoCropArea: 1,
+          viewMode: 1,
+          scalable: false,
+          zoomable: false,
+          movable: false,
+          minCropBoxWidth: 200,
+          minCropBoxHeight: 200,
+          })
+
+          crop_btn.addEventListener('click', ()=>{
+            cropper.getCroppedCanvas().toBlob((blob)=>{
+              let fileInputElement = document.getElementById('id_img');
+              let file = new File([blob], img_data.name,{type:"image/*", lastModified:new Date().getTime()});
+              let container = new DataTransfer();
+              container.items.add(file);
+              fileInputElement.files = container.files;
+
+              document.getElementById('image-box').style.display = 'none'
+              document.getElementById('crop-btn').style.display = 'none'
+              });
+            });
+        });
+    </script>
 {% endblock %}
