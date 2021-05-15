@@ -15,6 +15,7 @@ input.addEventListener('change', () => {
 
   const cropper = new Cropper(image, {
     autoCropArea: 1,
+    aspectRatio: 1 / 1,
     viewMode: 1,
     scalable: false,
     zoomable: false,
@@ -24,7 +25,7 @@ input.addEventListener('change', () => {
   })
 
   crop_btn.addEventListener('click', () => {
-    cropper.getCroppedCanvas().toBlob((blob) => {
+    cropper.getCroppedCanvas({ width: 200, height: 200 }).toBlob((blob) => {
       let fileInputElement = document.getElementById('id_img');
       let file = new File([blob], img_data.name, { type: "image/*", lastModified: new Date().getTime() });
       let container = new DataTransfer();
