@@ -63,7 +63,13 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    # https://github.com/cobrateam/django-htmlmin
+    'htmlmin.middleware.HtmlMinifyMiddleware',
+    'htmlmin.middleware.MarkRequestMiddleware',
 ]
+
+# https://github.com/cobrateam/django-htmlmin
+HTML_MINIFY = True
 
 ROOT_URLCONF = 'socialrep.urls'
 
