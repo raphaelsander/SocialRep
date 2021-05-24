@@ -11,32 +11,38 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 from pathlib import Path
-from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-try:
-    SECRET_KEY = config('SECRET_KEY')
-    print("File Variable Loaded")
-except:
+if os.getenv('SECRET_KEY') is None:
+    SECRET_KEY = "secret_key_temp"
+    print("SECRET_KEY = ", SECRET_KEY)
+    print("Warning: Don't use the default SECRET_KEY in production environment!")
+else:
     SECRET_KEY = os.getenv('SECRET_KEY')
-    print("Environment Variable Loaded")
+    print("SECRET_KEY = ", os.getenv('SECRET_KEY'))
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+if (os.getenv('DEBUG') is None) or (os.getenv('DEBUG') == "False"):
+    DEBUG = False
+    print("DEBUG = ", os.getenv('DEBUG'))
+elif os.getenv('DEBUG') == "True":
+    DEBUG = True
+    print("DEBUG = ", os.getenv('DEBUG'))
 
-ALLOWED_HOSTS = []
-
+if os.getenv('ALLOWED_HOSTS') is None:
+    print("ALLOWED_HOSTS environment variable missing")
+else:
+    ALLOWED_HOSTS = os.getenv('ALLOWED_HOSTS').split(",")
+    print("ALLOWED_HOSTS = ", os.getenv('ALLOWED_HOSTS'))
 
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -92,15 +98,12 @@ TEMPLATES = [
     },
 ]
 
-
 AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-
 WSGI_APPLICATION = 'socialrep.wsgi.application'
-
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
@@ -116,7 +119,6 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.2/releases/3.2/#customizing-type-of-auto-created-primary-keys
 
 DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -136,7 +138,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
@@ -149,7 +150,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
