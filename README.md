@@ -83,9 +83,17 @@ docker build -t socialrep .
 ### Execute the container
 
 ```bash
-docker run --name socialrep -d -e SECRET_KEY=test -p 80:8000 socialrep
+docker run --name socialrep -d -e SECRET_KEY=test -e DEBUG=true -p 80:8000 socialrep
 ```
 
 Reference: <https://docs.docker.com/engine/reference/commandline/run/>
 
 *Now you can access the web application in your [localhost](http:localhost)*
+
+### Environment Variables
+
+| Env. Variables | Values                           | Examples                      | Descriptions                                                                    |
+|----------------|----------------------------------|-------------------------------|---------------------------------------------------------------------------------|
+| ALLOWED_HOSTS  | IPv4/IPv6 IP Address or HostName | 192.168.0.101,127.0.0.1,[::1] | https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/#allowed-hosts |
+| DEBUG          | True or False                    | True                          | https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/#debug         |
+| SECRET_KEY     | String                           | my_secret_key                 | https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/#secret-key    |
