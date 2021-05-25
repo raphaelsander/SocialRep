@@ -88,4 +88,4 @@ docker run --name socialrep -d -e SECRET_KEY=test -p 80:8000 socialrep
 
 Reference: <https://docs.docker.com/engine/reference/commandline/run/>
 
-*Now you can access the web application in you [localhost](http:localhost)*
+*Now you can access the web application in your [localhost](http:localhost)*
