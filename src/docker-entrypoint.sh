@@ -13,4 +13,4 @@ python manage.py migrate
 # Start server
 # Reference: https://docs.djangoproject.com/en/3.2/ref/django-admin/#runserver
 echo "Starting server"
-python manage.py runserver 0.0.0.0:8000
+python manage.py runserver 0.0.0.0:8000 --noreload
