@@ -11,7 +11,7 @@ class CreateForm(forms.ModelForm):
                   'has_grill', 'has_internet', 'has_maid', 'has_pool', 'has_snooker', 'has_washing_machine')
 
     name = forms.CharField(label="Nome", max_length=255)
-    slug = forms.SlugField(label="Slug", max_length=50)
+    slug = forms.SlugField(label="Slug", max_length=50, disabled=True)
     body = forms.CharField(label="Descrição", widget=forms.Textarea)
     img = forms.ImageField(label="Imagem")
     has_animal = forms.BooleanField(label="Animal", required=False)
