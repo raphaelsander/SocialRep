@@ -2,8 +2,72 @@
 
 {% block name %}{{ rep.name }}{% endblock %}
 
+{% block style %}
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.12.0/css/all.css">
+{% endblock %}
+
 {% block content %}
     <h2>{{ rep.name }}</h2>
+    <div class="d-flex flex-column" id="content-wrapper">
+        <div id="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-primary py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Moradores</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span>5</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-user-friends fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-success py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Desde</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span>25/10/2010</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="far fa-calendar-alt fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-info py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Já moraram aqui</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span>12</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-user-graduate fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-xl-3 mb-4">
+                        <div class="card shadow border-left-warning py-2">
+                            <div class="card-body">
+                                <div class="row align-items-center no-gutters">
+                                    <div class="col mr-2">
+                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tipo</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0"><span>Mista</span></div>
+                                    </div>
+                                    <div class="col-auto"><i class="fas fa-venus-mars fa-2x text-gray-300"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <p class="date">
         Publicado em {{ rep.created }} por {{ rep.author }}
     </p>
