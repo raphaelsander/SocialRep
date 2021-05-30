@@ -1,13 +1,17 @@
 .asteriskField {
     display: none;
 }
-.container{
-    margin-top: 20px;
-}
 .croped-img img,
 .preview img {
   width: 100%;
   max-height: 350px;
+}
+
+/* Rep Create */
+
+.rep-create {
+    margin-top: 20px;
+    margin-bottom: 20px;
 }
 
 /* Republic Card */
