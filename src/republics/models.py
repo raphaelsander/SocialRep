@@ -1,7 +1,8 @@
 from django.contrib.auth.models import User
 from django.db import models
 from django.urls import reverse
-import os
+from django.utils import timezone
+from os import path
 from uuid import uuid4
 
 
@@ -15,12 +16,13 @@ def path_and_rename(instance, filename):
         # set filename as random string
         filename = '{}.{}'.format(uuid4().hex, ext)
     # return the whole path to the file
-    return os.path.join(upload_to, filename)
+    return path.join(upload_to, filename)
 
 
 class Rep(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=50, unique=True)
+    since = models.DateField(default=timezone.now, null=True, blank=True)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)
