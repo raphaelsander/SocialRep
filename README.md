@@ -83,7 +83,7 @@ docker build -t socialrep .
 ### Execute the container
 
 ```bash
-docker run --name socialrep -d -e SECRET_KEY=test -e DEBUG=true -p 80:8000 socialrep
+docker run --name socialrep -d -e SECRET_KEY=test -e DEBUG=True -p 80:8000 socialrep
 ```
 
 Reference: <https://docs.docker.com/engine/reference/commandline/run/>
