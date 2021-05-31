@@ -3,14 +3,17 @@
 {% block title %}SocialRep{% endblock %}
 {% load static %}
 {% block content %}
-    <form method="post" enctype="multipart/form-data">
+    <form class="rep-create" method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-row">
-            <div class="form-group col-md-6 mb-0">
+            <div class="form-group col-md-4 mb-0">
                 {{ form.name|as_crispy_field }}
             </div>
-            <div class="form-group col-md-6 mb-0">
+            <div class="form-group col-md-4 mb-0">
                 {{ form.slug|as_crispy_field }}
+            </div>
+            <div class="form-group col-md-4 mb-0">
+                {{ form.since|as_crispy_field }}
             </div>
         </div>
         {{ form.body|as_crispy_field }}

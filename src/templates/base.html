@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="{% static 'fonts/font-awesome.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/styles.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+    <link rel="shortcut icon" href="{% static 'favicon/favicon.ico' %}"/>
     {% block style %}{% endblock %}
     <title>{% block title %}{% endblock %}</title>
 </head>
@@ -16,6 +17,9 @@
     <header>
         <nav class="navbar navbar-light navbar-expand-md text-white navigation-clean-button" style="background-color: rgb(0,0,0);">
             <div class="container">
+                <a href="{% url 'pages:home' %}">
+                    <img src="{% static 'imgs/logo.svg' %}" width="50" height="50">
+                </a>
                 <a class="navbar-brand" href="{% url 'pages:home' %}">SocialRep</a>
                 <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: rgb(255,255,255);background-color: #ffffff;">
                     <span class="sr-only">Toggle navigation</span>

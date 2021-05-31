@@ -7,11 +7,17 @@ from django import forms
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Rep
-        fields = ('name', 'slug', 'body', 'img', 'has_animal', 'has_3d_printer', 'has_garage',
+        fields = ('name', 'slug', 'since', 'body', 'img', 'has_animal', 'has_3d_printer', 'has_garage',
                   'has_grill', 'has_internet', 'has_maid', 'has_pool', 'has_snooker', 'has_washing_machine')
 
     name = forms.CharField(label="Nome", max_length=255)
-    slug = forms.SlugField(label="Slug", max_length=50, disabled=True)
+    slug = forms.SlugField(label="Slug", max_length=50)
+    since = forms.DateField(
+        label="Desde",
+        widget=forms.TextInput(
+            attrs={'type': 'date'}
+        )
+    )
     body = forms.CharField(label="Descrição", widget=forms.Textarea)
     img = forms.ImageField(label="Imagem")
     has_animal = forms.BooleanField(label="Animal", required=False)
