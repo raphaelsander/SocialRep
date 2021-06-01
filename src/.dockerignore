@@ -1,1 +1,6 @@
+.dockerignore
+.env
+db.sqlite3
+docker-compose.yml
 Dockerfile
+media
