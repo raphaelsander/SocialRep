@@ -5,6 +5,7 @@
 {% block content %}
     <form class="rep-create" method="post" enctype="multipart/form-data">
         {% csrf_token %}
+        {{ form.non_field_errors }}
         <div class="form-row">
             <div class="form-group col-md-4 mb-0">
                 {{ form.name|as_crispy_field }}
