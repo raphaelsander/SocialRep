@@ -80,6 +80,8 @@ python manage.py createsuperuser
 docker build -t socialrep .
 ```
 
+*Before build in Windows, it's need change the line separator in docker-entrypoint.sh file to LF instead CRLF.*
+
 ### Execute the container
 
 ```bash
