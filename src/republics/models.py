@@ -23,6 +23,14 @@ class Rep(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=50, unique=True)
     since = models.DateField(default=timezone.now, null=True, blank=True)
+    type = models.CharField(
+        choices=[
+            ("1", "Feminina"),
+            ("2", "Masculina"),
+            ("3", "Mista")
+        ],
+        max_length=10
+    )
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     body = models.TextField()
     created = models.DateTimeField(auto_now_add=True)

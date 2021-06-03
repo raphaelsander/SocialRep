@@ -8,7 +8,7 @@ from datetime import date
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Rep
-        fields = ('name', 'slug', 'since', 'body', 'img', 'has_animal', 'has_3d_printer', 'has_garage',
+        fields = ('name', 'slug', 'since', 'type', 'body', 'img', 'has_animal', 'has_3d_printer', 'has_garage',
                   'has_grill', 'has_internet', 'has_maid', 'has_pool', 'has_snooker', 'has_washing_machine')
 
     def check_date(self):
@@ -23,6 +23,14 @@ class CreateForm(forms.ModelForm):
         widget=forms.TextInput(
             attrs={'type': 'date'}
         )
+    )
+    type = forms.ChoiceField(
+        label="Tipo",
+        choices=[
+            ("1", "Feminina"),
+            ("2", "Masculina"),
+            ("3", "Mista")
+        ]
     )
     body = forms.CharField(label="Descrição", widget=forms.Textarea)
     img = forms.ImageField(label="Imagem")

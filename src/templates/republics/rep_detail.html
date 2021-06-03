@@ -57,9 +57,31 @@
                                 <div class="row align-items-center no-gutters">
                                     <div class="col mr-2">
                                         <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tipo</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>Mista</span></div>
+                                        <div class="text-dark font-weight-bold h5 mb-0">
+                                            <span>
+                                                {% if rep.type == "1" %}
+                                                    Feminina
+                                                {% elif rep.type == "2" %}
+                                                    Masculina
+                                                {% elif rep.type == "3" %}
+                                                    Mista
+                                                {% else %}
+                                                    --
+                                                {% endif %}
+                                            </span>
+                                        </div>
                                     </div>
-                                    <div class="col-auto"><i class="fas fa-venus-mars fa-2x text-gray-300"></i></div>
+                                    <div class="col-auto">
+                                        {% if rep.type == "1" %}
+                                            <i class="fas fa-venus fa-2x text-gray-300"></i>
+                                        {% elif rep.type == "2" %}
+                                            <i class="fas fa-mars fa-2x text-gray-300"></i>
+                                        {% elif rep.type == "3" %}
+                                            <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
+                                        {% else %}
+                                            <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
+                                        {% endif %}
+                                    </div>
                                 </div>
                             </div>
                         </div>
