@@ -7,91 +7,172 @@
 {% endblock %}
 
 {% block content %}
-    <h2>{{ rep.name }}</h2>
-    <div class="d-flex flex-column" id="content-wrapper">
-        <div id="content">
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-left-primary py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Moradores</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>5</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-user-friends fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
+    <div class="row" style="margin: 20px;20px;">
+        <div class="col-3 shadow-lg">
+            <div class="row">
+                <div class="col text-center">
+                    <h1 class="text-center">{{ rep.name }}</h1>
+                </div>
+            </div>
+            <div class="row" style="margin: 20px;">
+                <div class="col text-center" style="padding: 0px;">
+                    <picture><img width="200px" height="200px" src="/media/{{ rep.img }}" /></picture>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="row text-center justify-content-center">
+                        <div class="col-1" style="padding: 0px;"><i class="fab fa-facebook"></i></div>
+                        <div class="col-1" style="padding: 0px;"><i class="fab fa-instagram"></i></div>
+                        <div class="col-1" style="padding: 0px;"><i class="fab fa-twitter"></i></div>
                     </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-left-success py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Desde</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>{{ rep.since|date:"d/m/Y" }}</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="far fa-calendar-alt fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-left-info py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Já moraram aqui</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0"><span>12</span></div>
-                                    </div>
-                                    <div class="col-auto"><i class="fas fa-user-graduate fa-2x text-gray-300"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-xl-3 mb-4">
-                        <div class="card shadow border-left-warning py-2">
-                            <div class="card-body">
-                                <div class="row align-items-center no-gutters">
-                                    <div class="col mr-2">
-                                        <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tipo</span></div>
-                                        <div class="text-dark font-weight-bold h5 mb-0">
-                                            <span>
-                                                {% if rep.type == "1" %}
-                                                    Feminina
-                                                {% elif rep.type == "2" %}
-                                                    Masculina
-                                                {% elif rep.type == "3" %}
-                                                    Mista
-                                                {% else %}
-                                                    --
-                                                {% endif %}
-                                            </span>
-                                        </div>
-                                    </div>
-                                    <div class="col-auto">
-                                        {% if rep.type == "1" %}
-                                            <i class="fas fa-venus fa-2x text-gray-300"></i>
-                                        {% elif rep.type == "2" %}
-                                            <i class="fas fa-mars fa-2x text-gray-300"></i>
-                                        {% elif rep.type == "3" %}
-                                            <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
-                                        {% else %}
-                                            <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
-                                        {% endif %}
-                                    </div>
-                                </div>
-                            </div>
+                    <div class="row">
+                        <div class="col">
+                            <ul class="list-group text-center">
+                                {% if rep.has_animal %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/animal.svg" width="36">
+                                    <span>Animal</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_3d_printer %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/3d_printer.svg" width="36">
+                                    <span>Impressora 3D</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_garage %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/garage.svg" width="36">
+                                    <span>Garagem</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_grill %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/grill.svg" width="36">
+                                    <span>Churrasqueira</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_internet %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/internet.svg" width="36">
+                                    <span>Internet</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_maid %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/maid.svg" width="36">
+                                    <span>Empregada/Diarista</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_pool %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/pool.svg" width="36">
+                                    <span>Piscina</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_snooker %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/snooker.svg" width="36">
+                                    <span>Sinuca</span>
+                                </li>
+                                {% endif %}
+                                {% if rep.has_washing_machine %}
+                                <li class="list-group-item">
+                                    <img height="36" src="/static/imgs/washing_machine.svg" width="36">
+                                    <span>Máquina de Lavar</span>
+                                </li>
+                                {% endif %}
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+        <div class="d-flex flex-column col-md-9" id="content-wrapper">
+            <div id="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-primary py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-primary font-weight-bold text-xs mb-1"><span>Moradores</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>5</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user-friends fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-success py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Desde</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>{{ rep.since|date:"d/m/Y" }}</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="far fa-calendar-alt fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-info py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-success font-weight-bold text-xs mb-1"><span>Moraram</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0"><span>12</span></div>
+                                        </div>
+                                        <div class="col-auto"><i class="fas fa-user-graduate fa-2x text-gray-300"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-xl-3 mb-4">
+                            <div class="card shadow border-left-warning py-2">
+                                <div class="card-body">
+                                    <div class="row align-items-center no-gutters">
+                                        <div class="col mr-2">
+                                            <div class="text-uppercase text-warning font-weight-bold text-xs mb-1"><span>Tipo</span></div>
+                                            <div class="text-dark font-weight-bold h5 mb-0">
+                                                <span>
+                                                    {% if rep.type == "1" %}
+                                                        Feminina
+                                                    {% elif rep.type == "2" %}
+                                                        Masculina
+                                                    {% elif rep.type == "3" %}
+                                                        Mista
+                                                    {% else %}
+                                                        --
+                                                    {% endif %}
+                                                </span>
+                                            </div>
+                                        </div>
+                                        <div class="col-auto">
+                                            {% if rep.type == "1" %}
+                                                <i class="fas fa-venus fa-2x text-gray-300"></i>
+                                            {% elif rep.type == "2" %}
+                                                <i class="fas fa-mars fa-2x text-gray-300"></i>
+                                            {% elif rep.type == "3" %}
+                                                <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
+                                            {% else %}
+                                                <i class="fas fa-venus-mars fa-2x text-gray-300"></i>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="margin: 20px 20px">
+                        {{ rep.body|linebreaks }}
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <p class="date">
-        Publicado em {{ rep.created }} por {{ rep.author }}
-    </p>
-    {{ rep.body|linebreaks }}
 {% endblock %}

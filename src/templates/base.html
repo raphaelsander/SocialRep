@@ -16,37 +16,35 @@
 <body>
     <header>
         <nav class="navbar navbar-light navbar-expand-md text-white navigation-clean-button" style="background-color: rgb(0,0,0);">
-            <div class="container">
-                <a href="{% url 'pages:home' %}">
-                    <img src="{% static 'imgs/logo.svg' %}" width="50" height="50">
-                </a>
-                <a class="navbar-brand" href="{% url 'pages:home' %}">SocialRep</a>
-                <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: rgb(255,255,255);background-color: #ffffff;">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="navbar-toggler-icon"></span></button>
-                <div
-                    class="collapse navbar-collapse" id="navcol-1">
-                    <ul class="nav navbar-nav mr-auto">
-                        <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{% url 'republics:list' %}">Republicas</a></li>
-                        <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">Sobre</a></li>
-                    </ul>
-                    <span class="navbar-text actions">
-                        {% if user.is_authenticated %}
-                        <a class="btn btn-light text-white action-button" role="button" href="/create/" style="background-color: rgb(49,181,3);">Cadastrar Rep</a>
-                        <a class="btn btn-light text-white action-button" role="button" href="{% url 'account_logout' %}" style="background-color: rgb(122,0,0);">Sair</a>
-                        {% else %}
-                        <a class="text-white login" href="{% url 'account_login' %}">Entrar</a>
-                        <a class="btn btn-light text-white action-button" role="button" href="{% url 'account_signup' %}" style="background-color: rgb(49,181,3);">Cadastrar</a>
-                        {% endif %}
-                    </span>
-                </div>
+            <a href="{% url 'pages:home' %}">
+                <img src="{% static 'imgs/logo.svg' %}" width="50" height="50">
+            </a>
+            <a class="navbar-brand" href="{% url 'pages:home' %}" style="margin: 0px 20px">
+                <h1>SocialRep</h1>
+            </a>
+            <button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1" style="color: rgb(255,255,255);background-color: #ffffff;">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="navbar-toggler-icon"></span></button>
+            <div
+                class="collapse navbar-collapse" id="navcol-1">
+                <ul class="nav navbar-nav mr-auto">
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="{% url 'republics:list' %}">Republicas</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link text-white" href="#">Sobre</a></li>
+                </ul>
+                <span class="navbar-text actions">
+                    {% if user.is_authenticated %}
+                    <a class="btn btn-light text-white action-button" role="button" href="/create/" style="background-color: rgb(49,181,3);">Cadastrar Rep</a>
+                    <a class="btn btn-light text-white action-button" role="button" href="{% url 'account_logout' %}" style="background-color: rgb(122,0,0);">Sair</a>
+                    {% else %}
+                    <a class="text-white login" href="{% url 'account_login' %}">Entrar</a>
+                    <a class="btn btn-light text-white action-button" role="button" href="{% url 'account_signup' %}" style="background-color: rgb(49,181,3);">Cadastrar</a>
+                    {% endif %}
+                </span>
             </div>
         </nav>
     </header>
-    <main class="container">
-        {% block content %}
-        {% endblock %}
-    </main>
+    {% block content %}
+    {% endblock %}
     <script src="{% static 'js/jquery.min.js' %}"></script>
     <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
     {% block script %}
