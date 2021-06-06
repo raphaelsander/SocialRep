@@ -8,12 +8,23 @@ from datetime import date
 class CreateForm(forms.ModelForm):
     class Meta:
         model = Rep
-        fields = ('name', 'slug', 'since', 'type', 'residents', 'body', 'img', 'has_animal', 'has_3d_printer', 'has_garage',
-                  'has_grill', 'has_internet', 'has_maid', 'has_pool', 'has_snooker', 'has_washing_machine')
+        fields = ('name', 'slug', 'since', 'type', 'residents', 'lived', 'body', 'img', 'has_animal',
+                  'has_3d_printer', 'has_garage', 'has_grill', 'has_internet', 'has_maid', 'has_pool',
+                  'has_snooker', 'has_washing_machine')
 
     def check_date(self):
         if self > date.today():
             raise forms.ValidationError("De volta para o futuro?")
+
+    def clean(self):
+        cleaned_data = super().clean()
+
+        residents = cleaned_data.get("residents")
+        lived = cleaned_data.get("lived")
+
+        if lived < residents:
+            raise forms.ValidationError("O número de pessoas que já moraram deve ser maior "
+                                        "ou igual ao número de pessoas que moram atualmente!")
 
     name = forms.CharField(label="Nome", max_length=255)
     slug = forms.SlugField(label="Slug", max_length=50)
@@ -33,6 +44,10 @@ class CreateForm(forms.ModelForm):
         ]
     )
     residents = forms.DecimalField(label="Moradores", min_value=1)
+    lived = forms.DecimalField(
+        label="Moraram",
+        min_value=1
+    )
     body = forms.CharField(label="Descrição", widget=forms.Textarea)
     img = forms.ImageField(label="Imagem")
     has_animal = forms.BooleanField(label="Animal", required=False)
