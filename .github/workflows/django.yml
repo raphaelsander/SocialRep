@@ -33,3 +33,22 @@ jobs:
           SECRET_KEY: secret_test
       run: |
         python manage.py test
+    - name: Install Open VPN
+      run: sudo apt-get install openvpn
+    - name: Connect VPN
+      uses: golfzaptw/action-connect-ovpn@master
+      id: connect_vpn
+      with:
+        PING_URL: ${{ secrets.PING_URL }}
+        FILE_OVPN: '.github/workflows/config.ovpn'
+        SECRET: ${{ secrets.SECRET }}
+        TLS_KEY: ${{ secrets.TLS_KEY }}
+      env:
+        CA_CRT: ${{ secrets.CA_CRT}}
+        USER_CRT: ${{ secrets.USER_CRT }}
+        USER_KEY: ${{ secrets.USER_KEY }}
+    - name: Check Connect VPN
+      run: echo ${{ steps.connect_vpn.outputs.STATUS }}
+    - name: kill vpn
+      if: always()
+      run: sudo killall openvpn
