@@ -2,6 +2,9 @@
 {% load crispy_forms_tags %}
 {% block title %}SocialRep{% endblock %}
 {% load static %}
+{% block style %}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.11/cropper.css">
+{% endblock %}
 {% block content %}
     <form class="rep-create" method="post" enctype="multipart/form-data" style="margin: 20px 100px">
         {% csrf_token %}
