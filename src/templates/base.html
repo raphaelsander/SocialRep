@@ -60,22 +60,85 @@
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>Configurações
                                 </a>
                                 <div class="dropdown-divider"></div>
-                                <a role="presentation" class="dropdown-item" href="{% url 'account_logout' %}">
+
+                                <a role="presentation" class="dropdown-item" data-toggle="modal" data-target="#LogoutModal" href="{% url 'account_logout' %}">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>Sair
                                 </a>
                             </div>
                         </div>
                     </li>
+
+                    <!--Logout Modal-->
+                    <div class="modal fade" id="LogoutModal" tabindex="-1" role="dialog" aria-labelledby="LogoutModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Logout</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                </div>
+                                <div class="modal-body">
+                                    <p>Deseja mesmo sair da sua conta?</p>
+                                    <form method="post" action="/accounts/logout/">
+                                        {% csrf_token %}
+                                        <button class="btn btn-danger" type="submit">Sair</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
                     {% else %}
                     <li class="nav-item" role="presentation">
-                        <a class="btn btn-primary" href="{% url 'account_login' %}">Entrar</a>
+                        <a class="btn btn-primary" data-toggle="modal" data-target="#LoginModal">Entrar</a>
                         <a class="btn btn-primary" href="{% url 'account_signup' %}">Cadastrar</a>
                     </li>
+
+                    <!--Login Modal-->
+                    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="LoginModal" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLongTitle">Login</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+                                </div>
+                                <div class="modal-body">
+                                    <!--Login Form-->
+                                    <form method="post" action="/accounts/login/">
+                                        {% csrf_token %}
+                                        <div class="form-group" id="div_id_login">
+                                            <label class="requiredField" for="id_login">E-mail:
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <div class="">
+                                                <input autocomplete="email" class="textinput textInput form-control" id="id_login" name="login" placeholder="Endereço de e-mail" required="" type="email">
+                                            </div>
+                                        </div>
+                                        <div class="form-group" id="div_id_password">
+                                            <label class="requiredField" for="id_password">Senha:
+                                                <span class="asteriskField">*</span>
+                                            </label>
+                                            <div class="">
+                                                <input autocomplete="current-password" class="textinput textInput form-control" id="id_password" name="password" placeholder="Senha" required="" type="password">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <div class="form-check" id="div_id_remember">
+                                                <input class="checkboxinput form-check-input" id="id_remember" name="remember" type="checkbox">
+                                                <label class="form-check-label" for="id_remember">Lembrar-me</label>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-success" type="submit">Entrar</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     {% endif %}
                 </ul>
             </div>
         </nav>
     </header>
+    {% block login %}{% endblock %}
     {% block content %}{% endblock %}
     <!--jQuery v3.5.1-->
     <script src="{% static 'js/jquery.min.js' %}"></script>
