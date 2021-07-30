@@ -49,6 +49,6 @@ jobs:
         USER_KEY: ${{ secrets.USER_KEY }}
     - name: Check Connect VPN
       run: echo ${{ steps.connect_vpn.outputs.STATUS }}
-    - name: kill vpn
+    - name: Turning off VPN
       if: always()
       run: sudo killall openvpn
