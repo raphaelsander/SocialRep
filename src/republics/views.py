@@ -29,3 +29,7 @@ def create_rep(request):
 
     else:
         return redirect('/accounts/login/')
+
+
+def about(request):
+    return render(request, "about.html")

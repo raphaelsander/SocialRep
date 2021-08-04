@@ -17,13 +17,14 @@ from django.contrib import admin
 from django.urls import include, path
 from django.conf import settings
 from django.conf.urls.static import static
-from republics.views import create_rep
+from republics.views import create_rep, about
 
 
 urlpatterns = [
     path('jaVTfPOEIYPQe89JdluEvCFFYHZW5Cnm/', admin.site.urls),
     path('accounts/', include('allauth.urls')),
     path("republics/", include("republics.urls")),
+    path('about/', about, name="about"),
     path("", include("pages.urls", namespace="pages")),
     path("create/", create_rep, name="create")
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
